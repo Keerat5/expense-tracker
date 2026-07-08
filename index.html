@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>Expense Tracker</h1>
+
+    <div class="top">
+
+        <div class="form-card">
+
+            <h2>Add Expense</h2>
+
+            <input type="text" id="title" placeholder="Expense name">
+
+            <input type="number" id="amount" placeholder="Amount">
+
+            <select id="category">
+                <option>Food</option>
+                <option>Travel</option>
+                <option>Shopping</option>
+                <option>Bills</option>
+                <option>Entertainment</option>
+                <option>Others</option>
+            </select>
+
+            <input type="date" id="date">
+
+            <button id="addBtn">
+                Add Expense
+            </button>
+
+        </div>
+
+
+        <div class="summary">
+
+            <div class="card">
+                <h3>Total</h3>
+                <p id="total">₹0</p>
+            </div>
+
+            <div class="card">
+                <h3>This Month</h3>
+                <p id="monthTotal">₹0</p>
+            </div>
+            <div class="card">
+                <h3>Expenses</h3>
+                <p id="count">0</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="filter">
+
+        <select id="filterCategory">
+            <option value="All">All Categories</option>
+            <option>Food</option>
+            <option>Travel</option>
+            <option>Shopping</option>
+            <option>Bills</option>
+            <option>Entertainment</option>
+            <option>Others</option>
+        </select>
+
+    </div>
+
+
+    <div class="table-card">
+
+        <table>
+
+            <thead>
+
+            <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Action</th>
+            </tr>
+
+            </thead>
+
+            <tbody id="expenseList">
+                
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <div class="chart-card">
+
+        <canvas id="expenseChart"></canvas>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
