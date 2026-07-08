@@ -44,6 +44,7 @@ function addExpense(){
 
     renderExpenses();
     updateSummary();
+    drawChart();
     clearInputs();
 }
 
@@ -83,6 +84,7 @@ function deleteExpense(id){
 
     renderExpenses();
     updateSummary();
+    drawChart();
 }
 
 function editExpenses(id){
@@ -169,11 +171,81 @@ function filterExpenses(){
 
 }
 
+function drawChart() {
+
+    const totals = {};
+
+    expenses.forEach(expense => {
+
+        if (totals[expense.category]) {
+            totals[expense.category] += expense.amount;
+        } else {
+            totals[expense.category] = expense.amount;
+        }
+
+    });
+
+    const labels = Object.keys(totals);
+    const values = Object.values(totals);
+
+    if(chart){
+        chart.destroy();
+    }
+
+    chart = new Chart(expenseChart, {
+
+        type: "pie",
+
+        data: {
+
+            labels: labels,
+
+            datasets: [{
+
+                label: "Expenses",
+
+                data: values,
+
+                backgroundColor: [
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56",
+                    "#4BC0C0",
+                    "#9966FF",
+                    "#FF9F40"
+                ],
+
+                borderWidth: 1
+
+            }]
+
+        },
+
+        options: {
+
+            responsive: true,
+
+            plugins: {
+
+                legend: {
+
+                    position: "bottom"
+
+                }
+
+            }
+
+        }
+
+    });
+
+}
+
 filterCategory.addEventListener("change",filterExpenses);
 
 addBtn.addEventListener("click",addExpense);
 
 renderExpenses();
-filterExpenses();
 updateSummary();
+drawChart();
 clearInputs();

@@ -143,4 +143,10 @@ table{
 font-size:14px;
 }
 
+.chart-container{
+    width:500px;
+    max-width:100%;
+    margin:30px auto;
+}
+
 }
